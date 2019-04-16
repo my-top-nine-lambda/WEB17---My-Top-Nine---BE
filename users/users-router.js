@@ -26,14 +26,9 @@ router.get('/greet', restricted, async (req, res) => {
 router.post('/movies', restricted, async (req, res) => { 
     try {
         const movieId = req.decodedJwt.subject
-        console.log(movieId)
-        if(Movies.findIdMovies(movieId) === movieId) {
-            res.status(409).json({ message: "List already exists, please use the update functionality." })
-        } else {
-            const movie = req.body;
-            const movies = await Movies.add(movie, movieId);
-            res.status(200).json(movies);
-        }
+        const movie = req.body;
+        const movies = await Movies.add(movie, movieId);
+        res.status(200).json(movies);
     } catch (error) {
         res.status(500).json({ message: "failed add list" })
     }
@@ -63,8 +58,8 @@ router.get('/movies', restricted, async (req, res) => {
 
 router.post('/moviesDB', restricted, async (req, res) => {
     try{
-        movie = req.body
-        add = await MoviesDB.add(movie);
+        const movie = req.body
+        const add = await MoviesDB.add(movie);
         res.status(200).json({ message: "movie added" });
     } catch (error) {
         res.status(500).json({ message: "failed to add" })
@@ -72,13 +67,22 @@ router.post('/moviesDB', restricted, async (req, res) => {
     }
 })
 
-router.get('/moviesDB', restricted, (req, res) => {
+router.get('/moviesDB', restricted, async (req, res) => {
     try{
-        const allMovies = MoviesDB.find()
+        const allMovies = await MoviesDB.find()
         res.status(200).json(allMovies)
     } catch (error) {
         res.status(500).json({ message: "failed to get items"})
-        console.log(error)
+    }
+})
+
+router.get('/moviesDB/:id', restricted, async (req, res) => {
+    try{
+        const filmId = req.params.id;
+        const match = await MoviesDB.findById(filmId);
+        res.status(200).json(match)
+    } catch (error) {
+        res.status(500).json({ message: "failed to get item" })
     }
 })
 

@@ -2,13 +2,20 @@ const db = require('../data/dbConfig.js');
 
 module.exports = {
   add,
-  find
+  find,
+  findById
 };
 
 async function add(movie) {
   const [id] = await db('moviesDB').insert(movie)
 }
 
-function find() {
-    return db('moviesDB');
+async function find() {
+  const all = await db('moviesDB');
+  return all;
+}
+
+async function findById(filmId) {
+  const fetch = await db('moviesDB').where({ id: filmId }).first()
+  return fetch
 }
