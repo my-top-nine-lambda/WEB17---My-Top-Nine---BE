@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('movies', movies => {
-        // movies
+        // movies 
         //     .string('id', 128)
         movies
             .integer('user_id')
