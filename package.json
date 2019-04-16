@@ -4,6 +4,7 @@
   "description": "Backend part of Build Week for My Top Nine by JaySebagh",
   "main": "index.js",
   "scripts": {
+    "test": "jest --watch --verbose",
     "start": "node index.js",
     "server": "nodemon"
   },
@@ -30,6 +31,8 @@
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }
