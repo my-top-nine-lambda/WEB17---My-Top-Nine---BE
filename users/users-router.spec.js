@@ -1,17 +1,20 @@
 const request = require('supertest');
-const usersRouter = require('./users-router.js');
 const server = require('../server.js')
 
-// describe('user-router.js', () => {
-//     it('200 OK', () => {
-//         return request(usersRouter)
-//             .get('/')
-//             .expect(200)
-//     })
+// testing if it returns users
+// (need to remove restricted from first request in users-router in order for test to work)
+
+// it('200 OK USERS', () => {
+//     return request(server)
+//         .get('/api/users/')
+//         .expect(200)
 // })
 
-it('200 OK', () => {
+// testing unauthorized
+
+it('401 USERS', () => {
     return request(server)
         .get('/api/users/')
-        .expect(200)
+        .expect(401)
 })
+

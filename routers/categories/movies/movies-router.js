@@ -12,6 +12,7 @@ router.post('/movies', restricted, async (req, res) => {
         const movies = await Movies.add(movie, movieId);
         res.status(200).json(movies);
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: "failed add list" })
     }
 })
