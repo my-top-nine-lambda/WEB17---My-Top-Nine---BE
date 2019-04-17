@@ -7,7 +7,7 @@ module.exports = {
 };
 
 async function add(movie) {
-  const [id] = await db('moviesDB').insert(movie)
+  const [id] = await db('moviesDB').insert(movie).returning("id");
 }
 
 async function find() {
