@@ -19,7 +19,7 @@ async function add(movie, movieId) {
       seven: movie.seven,
       eight: movie.eight,
       nine: movie.nine
-    }).returning("id");
+    }).returning("user_id");
 
   return findIdMovies(movieId);
 }
