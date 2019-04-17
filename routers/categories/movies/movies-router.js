@@ -45,8 +45,8 @@ router.post('/moviesDB', restricted, async (req, res) => {
         const add = await MoviesDB.add(movie);
         res.status(200).json({ message: "movie added" });
     } catch (error) {
-        res.status(500).json({ message: "failed to add" })
         console.log(error)
+        res.status(500).json({ message: "failed to add" })
     }
 })
 
