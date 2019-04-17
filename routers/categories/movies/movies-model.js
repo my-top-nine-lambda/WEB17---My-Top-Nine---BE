@@ -28,7 +28,7 @@ function findIdMovies(movieId) {
     const user_id = movieId
     return db('movies')
         .where({ user_id })
-        // .first()
+        .first()
 }
 
 
