@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+ 
 const Movies = require('./movies-model')
 const MoviesDB = require('./moviesDB-model')
 const restricted = require('../../../auth/restricted-middleware.js');
@@ -58,6 +58,16 @@ router.get('/moviesDB', restricted, async (req, res) => {
         res.status(500).json({ message: "failed to get items"})
     }
 })
+
+// router.put('/moviesDB/:id', restricted, async (req, res) => {
+//     try {
+//         const filmId = req.params.id
+//         const match = await MoviesDB.findById(filmId);
+//         res.status(200).json(match)
+//     } catch (error) {
+//         res.status(500).json({ message: "failed to update movie" })
+//     }
+// })
 
 router.get('/moviesDB/:id', restricted, async (req, res) => {
     try{

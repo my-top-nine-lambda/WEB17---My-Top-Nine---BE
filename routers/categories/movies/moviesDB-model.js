@@ -3,7 +3,8 @@ const db = require('../../../data/dbConfig.js');
 module.exports = {
   add,
   find,
-  findById
+  findById,
+  // update
 };
 
 async function add(movie) {
@@ -19,3 +20,7 @@ async function findById(filmId) {
   const fetch = await db('moviesDB').where({ id: filmId }).first()
   return fetch
 }
+
+// async function update(filmId) {
+//   return db('moviesDB').where({ filmId }).update(name)
+// }
